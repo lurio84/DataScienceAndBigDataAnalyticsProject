@@ -38,9 +38,4 @@ clean_sample_reviews
 
 
 
-```bash
-use game_reviews_db
-show collections
-db.clean_sample_reviews.find().limit(10).pretty()
-```
 
