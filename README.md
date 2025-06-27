@@ -37,5 +37,27 @@ clean_sample_reviews
 ```
 
 
+## hypothesis
+### hypothesis 1
+
+if you have results "output_h1.txt", you can make it into MongoDB:
+```bash
+python3 import_output_to_mongo.py output_H1.py
+mongo
+use game_reviews_db
+db.output_h1_keywords.find().pretty()
+```
+
+The data is saved as follows:
+```plaintext
+{
+        "_id" : ObjectId("685f1f3931447ec680419a4c"),
+        "sentiment" : "neg",
+        "keyword" : "fun",
+        "count" : 1001
+}
+```
+
+
 
 
