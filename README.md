@@ -72,36 +72,21 @@ Evaluation Results:
   • Accuracy: 0.8732
 
 Sample Predictions: (Prediction: 1.0 = Positive, 0.0 = Negative. [P(pos),P(neg)])
-Review Text:   
-Label: 1, Prediction: 1.0, Probability: [0.0828, 0.9172]
---------------------------------------------------------------------------------
-Review Text:       property
-Label: 1, Prediction: 1.0, Probability: [0.0118, 0.9882]
---------------------------------------------------------------------------------
-Review Text:     back in my day!
-Label: 1, Prediction: 1.0, Probability: [0.0390, 0.9610]
---------------------------------------------------------------------------------
-Review Text:    pluses :  nostalgia, simple gameplay.    minuses :  graphics of ten-year prescription.    game counter strike is recommended who missed game clubs and the school and student's days spent to us! 
-Label: 1, Prediction: 0.0, Probability: [0.9043, 0.0957]
---------------------------------------------------------------------------------
-Review Text:   &lt;3 love it *__*
-Label: 1, Prediction: 1.0, Probability: [0.0423, 0.9577]
---------------------------------------------------------------------------------
-Review Text:   .
-Label: 1, Prediction: 1.0, Probability: [0.0828, 0.9172]
---------------------------------------------------------------------------------
-Review Text:   ...
-Label: 1, Prediction: 1.0, Probability: [0.0828, 0.9172]
---------------------------------------------------------------------------------
-Review Text:   10/10. that's all i need to say.
-Label: 1, Prediction: 1.0, Probability: [0.0058, 0.9942]
---------------------------------------------------------------------------------
-Review Text:   9/10
-Label: 1, Prediction: 1.0, Probability: [0.0391, 0.9609]
---------------------------------------------------------------------------------
-Review Text:   :)
-Label: 1, Prediction: 1.0, Probability: [0.0828, 0.9172]
---------------------------------------------------------------------------------
+
+| Review Text | Actual Label | Prediction | P(Positive) | P(Negative) | Correct? |
+|-------------|--------------|------------|-------------|-------------|----------|
+| *(empty)* | 1 | 1.0 | 0.0828 | 0.9172 | ✓ |
+| property | 1 | 1.0 | 0.0118 | 0.9882 | ✓ |
+| back in my day! | 1 | 1.0 | 0.0390 | 0.9610 | ✓ |
+| pluses : nostalgia, simple gameplay. minuses : graphics of ten-year prescription. game counter strike is recommended who missed game clubs and the school and student's days spent to us! | 1 | 0.0 | 0.9043 | 0.0957 | ✗ |
+| &lt;3 love it *__* | 1 | 1.0 | 0.0423 | 0.9577 | ✓ |
+| . | 1 | 1.0 | 0.0828 | 0.9172 | ✓ |
+| ... | 1 | 1.0 | 0.0828 | 0.9172 | ✓ |
+| 10/10. that's all i need to say. | 1 | 1.0 | 0.0058 | 0.9942 | ✓ |
+| 9/10 | 1 | 1.0 | 0.0391 | 0.9609 | ✓ |
+| :) | 1 | 1.0 | 0.0828 | 0.9172 | ✓ |
+
+**Accuracy in sample**: 9/10 (90%)
 
 #### How to run 
 please make sure that there's  `clean_sample.csv` in /user/ubuntu/reviews/
