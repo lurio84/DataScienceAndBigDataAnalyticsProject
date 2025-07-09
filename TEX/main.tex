@@ -1,0 +1,134 @@
+\documentclass[a4paper,twocolumn,11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Preamble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{threeparttable}  
+\usepackage{geometry}
+\geometry{margin=20mm}
+\usepackage{mathtools,amssymb,amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{listings}
+\usepackage{multicol}
+% Listings settings
+\lstset{
+  basicstyle=\ttfamily\small,
+  identifierstyle=\small,
+  commentstyle=\small\itshape,
+  keywordstyle=\small\bfseries,
+  ndkeywordstyle=\small,
+  stringstyle=\small\ttfamily,
+  frame=tb,
+  breaklines=true,
+  columns=fullflexible,
+  numbers=left,
+  numberstyle=\scriptsize,
+  stepnumber=1,
+  numbersep=1em,
+  lineskip=-0.5ex,
+  xleftmargin=2em,
+  xrightmargin=0em
+}
+
+% --- Renaming environment labels ---
+\renewcommand{\abstractname}{[Abstract]}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% ---- Title + Logo ----
+\begin{center}
+  \includegraphics[width=0.8\linewidth]{DSBDA/universitadipavia.png}
+
+  {\LARGE \textbf{Data Science and Big Data Analitics - Game Reviews}}\\[1em]
+  {\large Naoya Kumakura}\\
+  {\large Lucas Ronquillo Bernáldez } \\ 
+  {\large Sofía Fernández Coto } \\
+  {\normalsize Department of Computer Engineering\\Università di Pavia, Italy}\\
+  {\normalsize Date: 2025/6/21}\\
+  {\normalsize Github: \url{https://github.com/lurio84/DataScienceAndBigDataAnalyticsProject}}
+  
+\end{center}
+
+\vspace{1em}
+
+% ---- Abstract ----
+\section{Introduction}
+later write this
+\section{Dataset and Hypothesis}
+In this section, we report about the dataset that we used and our hypothesis.
+\subsection{Dataset - steam reviews}
+
+We used dataset "steam reviews" on kaggle\footnote{https://www.kaggle.com/datasets/andrewmvd/steam-reviews}.
+The Steam gaming platform is one of the largest and most active online video game stores, where players not only buy games but also leave reviews and feedback after playing. This dataset contains a large number of user-written reviews (text), review ratings, vote counts. It is particularly suitable for projects that involve Natural Language Processing (NLP), as each record includes a free-text review that allows for a wide range of linguistic and sentiment analysis. The size of the dataset is 2.16 GB, 5 columns (Table 1).
+
+\subsection{Analysis of Dataset}
+Using Numpy and Hadoop, we investigate the features of this dataset.
+
+\begin{table}[htbp]
+  \centering
+  \caption{title}
+  \label{tab:hogehoge}
+  \begin{threeparttable}
+    % 表だけをリサイズ
+    \resizebox{\linewidth}{!}{%
+      \begin{tabular}{ccccc}
+        \hline
+        app ID & app name & review text & R\_score & R\_votes \\ \hline \hline
+        10 & Counter-Strike & ruined my life. & 1 & 1 \\ \hline
+        10180 & Call of Duty\tnote{*} & good until hackers ruined it. & -1 & 0 \\ \hline
+      \end{tabular}%
+    } % ← resizebox 終わり
+    \begin{tablenotes}
+      \tiny
+      \item[*] "Call of Duty: Modern Warfare 2".
+    \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+
+\subsubsection{Analysis with Numpy}
+with numpy, we noticed these fact;
+
+\begin{itemize}
+    \item \textbf{Missing Data} — 53 missing review text. Other infomation are completed
+    \item \textbf{Similar Expressions} — (e.g. ":)", "great game!")
+\end{itemize}
+Although the current dataset does not contain missing rating data, building a model that can infer sentiment from review text remains important for handling potential future gaps.
+Reviews containing recurring phrases like ":)" or "great game!" are likely to be less informative. As such, this redundancy can serve as a valuable feature for models aiming to separate standard reviews from novel ones.
+\subsubsection{Analysis for Review text with BoW}
+We noticed that the dataset is required for preprocessing, about these features:
+
+\begin{itemize}
+  \item \textbf{Number expressions} — Pure numbers are filtered; meaningful ones (e.g., 10/10) should be whitelisted and kept.
+  \item \textbf{Typo} — Minor errors should be autocorrected; severe ones would be filtered or mapped to [UNK].
+  \item \textbf{Game terms} — Retained via whitelist(e.g. nerf, FPS)
+  \item \textbf{Emphasis} — Normalized (e.g., baaaaaad → bad); kept as +emph if sentimentally relevant.
+\end{itemize}
+
+
+\subsection{Hypothesis}
+Based on these analysis mentioned in previous section, We made 4 hypothesis about this Dataset.
+\begin{enumerate}
+    \item "Positive and negative reviews contain different sets of emotionally charged words, revealing linguistic patterns associated with user sentiment."
+    \item Some games receive significantly more negative reviews than others, indicating potential issues in their quality or community perception.
+    \item Positive reviews tend to have a higher lexical diversity than negative reviews.
+    \item Reviews with more helpfulness votes (review\_votes) contain stronger emotional sentiment and are generally longer.
+\end{enumerate}
+
+\subsection*{(\MakeUppercase{\romannumeral 2)}  Logistic Regression Model}
+This project involves constructing a Bag-of-Words (BoW) model and performing logistic regression. The process begins with BoW construction on Hadoop, where specific expressions (e.g., 10/10, ****) are predefined using regular expressions or a dictionary. The BoW is then generated via MapReduce and stored in HDFS. Subsequently, data loading and preprocessing are performed using PySpark. This involves loading the BoW word dictionary to create word vectors, followed by feature transformation (TF or TF-IDF). Finally, logistic regression for training and inference is conducted, leveraging PySpark MLlib.
+
+
+\end{document}
