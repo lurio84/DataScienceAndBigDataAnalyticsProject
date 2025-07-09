@@ -102,3 +102,11 @@ Label: 1, Prediction: 1.0, Probability: [0.0391, 0.9609]
 Review Text:   :)
 Label: 1, Prediction: 1.0, Probability: [0.0828, 0.9172]
 --------------------------------------------------------------------------------
+
+#### How to run 
+please make sure that there's  `clean_sample.csv` in /user/ubuntu/reviews/
+```
+./run_mapreduce.sh
+./run_logisticregression_local.sh
+```
+If there is `output_bow.txt`, `./run_logisticregression_local.sh` will work properly
