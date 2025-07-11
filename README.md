@@ -36,8 +36,10 @@ clean_sample_reviews
 
 
 ## hypothesis
-### H1
+### H1 Word Frequency in Positive vs Negative Reviews
+- Identify emotional language differences between positive and negative reviews
 
+#### How to use
 if you have results "output_h1.txt", you can make it into MongoDB:
 ```bash
 python3 import_output_to_mongo.py output_H1.py
@@ -45,7 +47,6 @@ mongo
 use game_reviews_db
 db.output_h1_keywords.find().pretty()
 ```
-
 The data is saved as follows:
 ```plaintext
 {
@@ -56,18 +57,27 @@ The data is saved as follows:
 }
 ```
 
-### H2
+### H2 Games with Most Negative Reviews
+- Find games with unusually high negative sentiment ratio
 
-### H3
+### H3 Lexical Diversity in Reviews
+<!-- Lexical  -->
+- Determine if positive reviews have richer vocabulary than negative ones. 
 
-### H4
+### H4 The detection of concrete, helpful remark
+<!--具体的なremarkの検出-->
+- Correlate high `review_votes` with emotional intensity and review length
 
-### H5 Losistic Regression
-This model was implemented with `Pyspark`. 
+### H5 Repair broken or null review_score with Losistic Regression model
+- With this model, `review_score` can be predicted with high percentage. This model can repair the `review_score` when this data is not collected.
 
-Hypothesis: with this model, `review_score` can be predicted with high percentage. This model can repair the `review_score` when this data is not collected.
+#### Technologies
+- Hadoop: Preprocessing into BOW(Bag of Words)
+- Pyspark: Implementing model
+- MongoDB: Store the infomation
 
-Evaluation Results:
+
+#### Evaluation Results:
   • ROC-AUC: 0.8482
   • Accuracy: 0.8732
 
