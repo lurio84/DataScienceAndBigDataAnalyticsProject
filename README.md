@@ -67,8 +67,21 @@ The data is saved as follows:
 ### H4 The detection of concrete, helpful remark
 <!--具体的なremarkの検出-->
 - Correlate high `review_votes` with emotional intensity and review length
+#### pre-analysis
+- First, I analyse with `textblob:subjectivity` score, which makes a grade from 0(Objective) to 1(Subjective).
+I pick up the comment which seems to be helpful for improving game, which is profittable to the game company.
+--- Review ---
+Index: 7
+Subjectivity: 0.000
+Text: cs 1.6 is crashing after the update... please fix asap!
+--- Review ---
+Index: 100
+Subjectivity: 0.000
+Text: You can shoot through walls.
 
-### H5 Repair broken or null review_score with Losistic Regression model
+
+
+### H5 Repair broken or null review_score with Logistic Regression model
 - With this model, `review_score` can be predicted with high percentage. This model can repair the `review_score` when this data is not collected.
 
 #### Technologies
