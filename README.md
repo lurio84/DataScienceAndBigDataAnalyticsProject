@@ -42,7 +42,7 @@ clean_sample_reviews
 #### How to use
 if you have results "output_h1.txt", you can make it into MongoDB:
 ```bash
-python3 import_output_to_mongo.py output_H1.py
+python3 import_output_to_mongo.py output_H1.txt
 mongo
 use game_reviews_db
 db.output_h1_keywords.find().pretty()
