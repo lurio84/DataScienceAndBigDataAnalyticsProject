@@ -88,7 +88,7 @@ I pick up the comment which seems to be helpful for improving game, which is pro
 
 
 #### Evaluation Results:
-  • ROC-AUC: 0.8482
+  • ROC-AUC: 0.8482\
   • Accuracy: 0.8732
 
 Sample Predictions: (Prediction: 1.0 = Positive, 0.0 = Negative. [P(pos),P(neg)])
