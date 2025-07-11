@@ -70,14 +70,11 @@ The data is saved as follows:
 #### pre-analysis
 - First, I analyse with `textblob:subjectivity` score, which makes a grade from 0(Objective) to 1(Subjective).
 I pick up the comment which seems to be helpful for improving game, which is profittable to the game company.
---- Review ---
-Index: 7
-Subjectivity: 0.000
-Text: cs 1.6 is crashing after the update... please fix asap!
---- Review ---
-Index: 100
-Subjectivity: 0.000
-Text: You can shoot through walls.
+
+| Index | Subjectivity | Review Text                                      |
+|-------|--------------|--------------------------------------------------|
+| 7     | 0.000        | cs 1.6 is crashing after the update... please fix asap! |
+| 100   | 0.000        | You can shoot through walls.                     |
 
 
 
