@@ -89,7 +89,7 @@ flowchart TD
     style D fill:#fff3e0
     style E fill:#fff3e0
 ```
-
+#### Table 1: Negative Reviews - Aces of the Galaxy
 ![Keywords Analysis](picture/Keywords.jpg)
 
 The TF-IDF (Term Frequency-Inverse Document Frequency) scores above represent the importance of words within each game's review sentiment:
