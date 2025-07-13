@@ -64,9 +64,52 @@ The data is saved as follows:
 <!-- Lexical  -->
 - Determine if positive reviews have richer vocabulary than negative ones. 
 
-### H4 The detection of concrete, helpful remark
+### H4 The detection of concrete, helpful Keywords (for understanding representation of user's expression, for improving the game)
 <!--具体的なremarkの検出-->
-- Correlate high `review_votes` with emotional intensity and review length
+
+#### Flow Chart
+```mermaid
+flowchart TD
+    A[Start: All Reviews in MongoDB] --> B[MongoDB Query: Remove trivial reviews]
+    B --> C[TextBlob: Filter for Objective Reviews]
+    C --> D[Filter by review_votes: Keep high-voted reviews]
+    D --> E[TF-IDF: Extract keywords by game & sentiment]
+    E --> F[Output: Meaningful Keywords for Game Improvement]
+    
+    B1[Examples: '10/10', ':)', 'good game'] --> B
+    C1[Subjectivity Score: 0.0 = Objective] --> C
+    D1[review_votes > threshold] --> D
+    E1[Term Frequency × Inverse Document Frequency] --> E
+    F1[Actionable insights for developers] --> F
+    
+    style A fill:#e1f5fe
+    style F fill:#c8e6c9
+    style B fill:#fff3e0
+    style C fill:#fff3e0
+    style D fill:#fff3e0
+    style E fill:#fff3e0
+```
+
+![Keywords Analysis](picture/keywords.jpg)
+
+The TF-IDF (Term Frequency-Inverse Document Frequency) scores above represent the importance of words within each game's review sentiment:
+
+**High TF-IDF patterns observed:**
+- **Counter-Strike**: Classic gaming terms dominate positive reviews (classic: 65.9, old: 62.4)
+- **Call of Duty: World at War**: Zombies content highly valued (zombies: 97.3 positive vs 9.9 negative)
+- **Call of Duty: Modern Warfare 2**: Strong positive sentiment indicators (fun: 28.2, perfect scores: 26.9)
+- **A.V.A. Alliance of Valiant Arms™**: Controversial elements appear in both sentiments (knife: 15.3 positive, 21.6 negative)
+
+**Common negative indicators across games:**
+- Technical issues: "crashes", "doesnt", "cant"
+- Value concerns: "money", "waste", "buy"
+- Gameplay problems: "dont", "get", "work"
+
+**Key insights:**
+- Game-specific terminology shows highest TF-IDF scores
+- Generic positive words (fun, game, play) appear consistently but with lower scores
+- Technical complaints have moderate but consistent TF-IDF scores across titles
+
 #### pre-analysis
 - First, I analyse with `textblob:subjectivity` score, which makes a grade from 0(Objective) to 1(Subjective).
 I pick up the comment which seems to be helpful for improving game, which is profittable to the game company.
