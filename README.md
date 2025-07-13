@@ -68,10 +68,10 @@ The data is saved as follows:
 <!--具体的なremarkの検出-->
 
 #### Process Overview
-1. **Data Filtering**: Remove trivial reviews (e.g., "10/10", ":)", "good game") from MongoDB
-2. **Objectivity Analysis**: Use TextBlob to filter for objective reviews (subjectivity score = 0.0)
-3. **Vote-based Selection**: Keep only reviews with high user votes (review_votes > threshold)
-4. **TF-IDF Extraction**: Calculate Term Frequency × Inverse Document Frequency for each game and sentiment
+1. **Data filtering with MongoDB Query**: Remove trivial reviews (e.g., "10/10", ":)", "good game") 
+2. **Objectivity Analysis with TextBlob**: Use TextBlob to filter for objective reviews (subjectivity score = 0.0)
+3. **Vote-based Selection**: Keep only reviews with high user votes (`review_votes` == 1)
+4. **TF-IDF Extraction**: Calculate Term Frequency × Inverse Document Frequency for each game and `review_score`(1:Good or -1:Bad)
 5. **Output Generation**: Produce meaningful keywords that provide actionable insights for game developers
 
 #### Table 1: Negative Reviews - Aces of the Galaxy
