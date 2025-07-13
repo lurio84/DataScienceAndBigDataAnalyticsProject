@@ -90,7 +90,7 @@ flowchart TD
     style E fill:#fff3e0
 ```
 
-![Keywords Analysis](picture/keywords.jpg)
+![Keywords Analysis](picture/Keywords.jpg)
 
 The TF-IDF (Term Frequency-Inverse Document Frequency) scores above represent the importance of words within each game's review sentiment:
 
