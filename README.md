@@ -76,11 +76,11 @@ flowchart TD
     D --> E[TF-IDF: Extract keywords by game & sentiment]
     E --> F[Output: Meaningful Keywords for Game Improvement]
     
-    B1[Examples: '10/10', ':)', 'good game'] --> B
-    C1[Subjectivity Score: 0.0 = Objective] --> C
-    D1[review_votes > threshold] --> D
-    E1[Term Frequency × Inverse Document Frequency] --> E
-    F1[Actionable insights for developers] --> F
+    B1["Examples: 10/10, :), good game"] --> B
+    C1["Subjectivity Score: 0.0 = Objective"] --> C
+    D1["review_votes > threshold"] --> D
+    E1["Term Frequency × Inverse Document Frequency"] --> E
+    F1["Actionable insights for developers"] --> F
     
     style A fill:#e1f5fe
     style F fill:#c8e6c9
