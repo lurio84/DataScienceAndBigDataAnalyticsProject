@@ -67,28 +67,13 @@ The data is saved as follows:
 ### H4 The detection of concrete, helpful Keywords (for understanding representation of user's expression, for improving the game)
 <!--具体的なremarkの検出-->
 
-#### Flow Chart
-```mermaid
-flowchart TD
-    A[Start: All Reviews in MongoDB] --> B[MongoDB Query: Remove trivial reviews]
-    B --> C[TextBlob: Filter for Objective Reviews]
-    C --> D[Filter by review_votes: Keep high-voted reviews]
-    D --> E[TF-IDF: Extract keywords by game & sentiment]
-    E --> F[Output: Meaningful Keywords for Game Improvement]
-    
-    B1["Examples: 10/10, :), good game"] --> B
-    C1["Subjectivity Score: 0.0 = Objective"] --> C
-    D1["review_votes > threshold"] --> D
-    E1["Term Frequency × Inverse Document Frequency"] --> E
-    F1["Actionable insights for developers"] --> F
-    
-    style A fill:#e1f5fe
-    style F fill:#c8e6c9
-    style B fill:#fff3e0
-    style C fill:#fff3e0
-    style D fill:#fff3e0
-    style E fill:#fff3e0
-```
+#### Process Overview
+1. **Data Filtering**: Remove trivial reviews (e.g., "10/10", ":)", "good game") from MongoDB
+2. **Objectivity Analysis**: Use TextBlob to filter for objective reviews (subjectivity score = 0.0)
+3. **Vote-based Selection**: Keep only reviews with high user votes (review_votes > threshold)
+4. **TF-IDF Extraction**: Calculate Term Frequency × Inverse Document Frequency for each game and sentiment
+5. **Output Generation**: Produce meaningful keywords that provide actionable insights for game developers
+
 #### Table 1: Negative Reviews - Aces of the Galaxy
 ![Keywords Analysis](picture/Keywords_new.jpg)
 
@@ -157,4 +142,3 @@ please make sure that there's  `clean_sample.csv` in /user/ubuntu/reviews/
 ./run_mapreduce.sh
 ./run_logisticregression_local.sh
 ```
-If there is `output_bow.txt`, `./run_logisticregression_local.sh` will work properly
