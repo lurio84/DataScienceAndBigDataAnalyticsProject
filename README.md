@@ -66,7 +66,6 @@ The data is saved as follows:
 
 ### H4 The detection of concrete, helpful Keywords (for understanding representation of user's expression, for improving the game)
 <!--具体的なremarkの検出-->
-
 #### Process Overview
 1. **Data filtering with MongoDB Query**: Remove trivial reviews (e.g., "10/10", ":)", "good game") 
 2. **Objectivity Analysis with TextBlob**: Use TextBlob to filter for objective reviews (subjectivity score = 0.0)
@@ -103,7 +102,6 @@ I pick up the comment which seems to be helpful for improving game, which is pro
 |-------|--------------|--------------------------------------------------|
 | 7     | 0.000        | cs 1.6 is crashing after the update... please fix asap! |
 | 100   | 0.000        | You can shoot through walls.                     |
-
 
 
 ### H5 Repair broken or null review_score with Logistic Regression model
