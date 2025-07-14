@@ -1,7 +1,7 @@
 #!/bin/bash
 
 spark-submit \
-  --master yarn \
+  --master local[*] \
   --deploy-mode cluster \
   --files special_tokens.txt,output_bow.txt \
   logistic_regression.py
