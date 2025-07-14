@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#start-dfs.sh
+#start-yarn.sh
+
 echo "🚀 Starting MapReduce job for Hypothesis 1 analysis..."
 
 # Step 1: Upload updated clean_sample.csv to HDFS
